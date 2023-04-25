@@ -1,0 +1,17 @@
+const request = new XMLHttpRequest();
+request.open('GET', 'http://localhost:8080/mydata', true);
+
+request.onload = function() {
+  if (this.status === 200) {
+    const response = JSON.parse(this.response);
+    console.log(response.message);
+  } else {
+    console.error('Error: ' + this.status);
+  }
+};
+
+request.onerror = function() {
+  console.error('Network error.');
+};
+
+request.send();
